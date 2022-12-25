@@ -1,4 +1,5 @@
 ﻿using FoodDelivery.Model;
+using FoodDelivery.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -24,15 +25,19 @@ namespace FoodDelivery.Controllers
         #region Auth
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public IActionResult Login([FromBody] LoginModel model)
         {
             // get user detail from database
-            var user = "User object";
+            dbServices dbMethods = new dbServices();
+                
+            var user = dbMethods.getUser(model);
 
             if (user != null)
             {
                 var token = GetToken(model.Username, model.Password);
-                return Ok(token);
+
+                user.Token = token;
+                return Ok(user);
             }
             return Unauthorized();
         }
@@ -42,30 +47,91 @@ namespace FoodDelivery.Controllers
         [HttpPost]
         [Authorize]
         [Route("AddItemToCart")]
-        public void AddToCart([FromBody] string value)
+        public IActionResult AddToCart([FromBody] CartModel model, string Token)
         {
+            // Auth. the Token
+
+            if(true/*isValidToken()*/)
+            {
+                dbServices dbMethods = new dbServices();
+
+                bool isIteamAdded = dbMethods.addCartItem(model);
+
+                if (isIteamAdded)
+                    return Ok(isIteamAdded);
+                else
+                    return Ok(isIteamAdded);
+            }
+            return Unauthorized();
+            
         }
 
         [HttpPost]
         [Authorize]
         [Route("RemoveItemFromCart")]
-        public void RemoveFromCart([FromBody] string value)
+        public IActionResult RemoveFromCart([FromBody] int userID,int ItemId, string Token)
         {
+            // Auth. the Token
+
+            if (true/*isValidToken()*/)
+            {
+                dbServices dbMethods = new dbServices();
+
+                bool isIteamRemoved = dbMethods.removeCartIteam(userID,ItemId);
+
+                if (isIteamRemoved)
+                    return Ok(isIteamRemoved);
+                else
+                    return Ok(isIteamRemoved);
+            }
+            return Unauthorized();
         }
 
         [HttpPost]
         [Authorize]
         [Route("AddUserDeliveryDetail")]
-        public void AddUserDeliveryDetail([FromBody] string value)
+        public IActionResult AddUserDeliveryDetail([FromBody] AddressModel model, string Token)
         {
+            // Auth. the Token
+
+            if (true/*isValidToken()*/)
+            {
+                dbServices dbMethods = new dbServices();
+
+                bool isAdded = dbMethods.deliveryDetails(model);
+
+                if (isAdded)
+                    return Ok(isAdded);
+                else
+                    return Ok(isAdded);
+            }
+            return Unauthorized();
         }
 
         [HttpGet]
         [Authorize]
         [Route("GetUserCartDetail/{id}")]
-        public string GetCartDetail(int id)
+        public IActionResult GetCartDetail(int UserId, string Token)
         {
-            return "value";
+            // Auth. the Token
+
+            if (true/*isValidToken()*/)
+            {
+                dbServices dbMethods = new dbServices();
+
+                var cartItemList = dbMethods.getCartDetail(UserId);
+
+                CartRespModel cartDetails = new CartRespModel();
+
+                //Add loop for Food Item and get Price
+
+                cartDetails.Items = cartItemList;
+                cartDetails.TotalItem = cartItemList.Count;
+                cartDetails.TotalPrice = 0;
+
+                return Ok(cartItemList);
+            }
+            return Unauthorized();
         }
 
         

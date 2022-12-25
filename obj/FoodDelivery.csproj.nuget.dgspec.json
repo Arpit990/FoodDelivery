@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Work\\ASP.NET\\Web Sites\\FoodDelivery\\FoodDelivery.csproj": {}
+    "D:\\Arpit_Fiver\\Food_Dilivery\\FoodDelivery.csproj": {}
   },
   "projects": {
-    "D:\\My Work\\ASP.NET\\Web Sites\\FoodDelivery\\FoodDelivery.csproj": {
+    "D:\\Arpit_Fiver\\Food_Dilivery\\FoodDelivery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Work\\ASP.NET\\Web Sites\\FoodDelivery\\FoodDelivery.csproj",
+        "projectUniqueName": "D:\\Arpit_Fiver\\Food_Dilivery\\FoodDelivery.csproj",
         "projectName": "FoodDelivery",
-        "projectPath": "D:\\My Work\\ASP.NET\\Web Sites\\FoodDelivery\\FoodDelivery.csproj",
-        "packagesPath": "C:\\Users\\Arpit Santoki\\.nuget\\packages\\",
-        "outputPath": "D:\\My Work\\ASP.NET\\Web Sites\\FoodDelivery\\obj\\",
+        "projectPath": "D:\\Arpit_Fiver\\Food_Dilivery\\FoodDelivery.csproj",
+        "packagesPath": "C:\\Users\\kingp\\.nuget\\packages\\",
+        "outputPath": "D:\\Arpit_Fiver\\Food_Dilivery\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Arpit Santoki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kingp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,6 +50,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [
@@ -67,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
