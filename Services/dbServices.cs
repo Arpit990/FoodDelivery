@@ -23,7 +23,7 @@ namespace FoodDelivery.Services
                         objCmd.CommandText = "UR_User_Select";
                         //objCmd.Parameters.Add("@Id", SqlDbType.Int).Direction = ParameterDirection.Output;
                         objCmd.Parameters.AddWithValue("@Username", SqlDbType.VarChar).Value = userModel.Username;
-                        objCmd.Parameters.AddWithValue("@Passwaord", SqlDbType.VarChar).Value = userModel.Password;
+                        objCmd.Parameters.AddWithValue("@Password", SqlDbType.VarChar).Value = userModel.Password;
 
                         #endregion Prepare Command
 
